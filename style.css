@@ -1,1 +1,115 @@
+/* =========================================================
+   EXPERT AUTO LITIGE — style.css v5 (THÈME LUMINEUX)
+   ========================================================= */
+:root {
+  --gold: #d4af37;
+  --gold-2: #f0cf6b;
+  --ink: #171c30;
+  --ink-soft: #4a5065;
+  --panel: rgba(255, 255, 255, 0.86);
+  --panel-strong: rgba(255, 255, 255, 0.95);
+  --line: rgba(23, 28, 48, 0.12);
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(20, 24, 43, 0.18);
+}
 
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+  background-color: #e9eef6;
+  background-image:
+    url('./fond.jpg'),
+    url('https://image.pollinations.ai/prompt/Bright%20luminous%20photorealistic%20scene%20of%20a%20modern%20red%20sports%20supercar%20parked%20on%20a%20sunlit%20marble%20plaza%20in%20front%20of%20a%20classical%20palace%20of%20justice%20with%20white%20columns%2C%20beside%20the%20goddess%20of%20justice%20Themis%20in%20golden%20gown%20holding%20golden%20scales%20and%20sword%2C%20warm%20sunlight%2C%20blue%20sky%2C%20bright%20cinematic%20lighting%2C%208k?width=1080&height=1920&nologo=true');
+  background-size: cover, cover;
+  background-position: center center, center center;
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, no-repeat;
+}
+
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.12) 45%, rgba(255,255,255,0.05) 100%);
+}
+
+.screen {
+  position: relative; z-index: 1; max-width: 860px; margin: 0 auto;
+  padding: 16px 14px 40px; min-height: 100vh;
+}
+.hidden { display: none !important; }
+
+.panel {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  padding: 18px 16px; margin: 14px 0;
+}
+
+.app-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; }
+.app-header h2 { margin: 0; font-size: 20px; letter-spacing: .3px; }
+.subtitle { margin: 4px 0 0; font-size: 12.5px; color: var(--ink-soft); }
+
+.login-box { max-width: 420px; margin: 12vh auto; text-align: center; background: var(--panel-strong); }
+.login-box .scales { font-size: 46px; }
+.login-box h1 { margin: 4px 0 2px; font-size: 26px; color: var(--ink); }
+
+label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: 14px; }
+input, select, textarea {
+  width: 100%; padding: 12px; font-size: 16px; color: var(--ink);
+  background: #ffffff; border: 1px solid #cfd6e4; border-radius: 10px; outline: none;
+  transition: border .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,.25);
+}
+textarea { min-height: 120px; resize: vertical; font-family: inherit; }
+
+button {
+  display: inline-block; width: 100%; margin-top: 14px; padding: 14px 18px;
+  font-size: 16px; font-weight: 700; color: #201a05;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold)); border: none;
+  border-radius: 12px; cursor: pointer; box-shadow: 0 6px 16px rgba(212,175,55,.35);
+  transition: transform .08s, filter .15s;
+}
+button:active { transform: scale(.98); }
+.btn-secondary {
+  width: auto; margin: 0; padding: 9px 14px; font-size: 13.5px; font-weight: 600;
+  color: #fff; background: rgba(23,28,48,.78); box-shadow: none; border-radius: 10px;
+}
+.btn-group { display: flex; gap: 10px; }
+.btn-group button { width: 50%; }
+
+#loading {
+  margin: 24px 0; padding: 22px 14px; text-align: center;
+  font-size: 17px; font-weight: 600; color: #6b5510;
+  background: rgba(255,255,255,.85); border: 1px dashed var(--gold); border-radius: var(--radius);
+}
+
+#reportContainer {
+  background: var(--panel-strong); border: 2px solid var(--gold); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 18px 16px; margin-top: 16px;
+}
+#reportContainer h3 { margin: 0 0 10px; color: #6b5510; }
+#reportText {
+  white-space: pre-wrap; font-family: Consolas, Menlo, monospace;
+  font-size: 13.5px; line-height: 1.55; color: #20242f;
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px; max-height: 60vh; overflow-y: auto;
+}
+
+#savedList > div {
+  background: rgba(255,255,255,.88) !important;
+  border: 1px solid var(--line) !important;
+  border-left: 5px solid var(--gold) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  margin: 10px 0 !important;
+  color: var(--ink) !important; cursor: pointer;
+  box-shadow: 0 4px 12px rgba(20,24,43,.10);
+}
+
+hr { border: none; border-top: 1px solid var(--line); margin: 18px 0; }
+h3.section-title { margin: 2px 0 4px; font-size: 16.5px; }

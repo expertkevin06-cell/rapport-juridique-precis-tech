@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#d4af37">
+  <title>Expert Auto Litige</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" href="./icon-192.png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://js.puter.com/v2/"></script>
+  <style>
+    #quotaBadge{display:inline-block;margin-top:6px;padding:6px 12px;font-size:12.5px;font-weight:700;color:#6b5510;background:rgba(255,255,255,.9);border:1px solid var(--gold);border-radius:999px}
+    #reportSource{font-size:12px;color:#4a5065;margin:0 0 8px;font-style:italic}
+    .provider-status{font-size:11px;color:#4a5065;margin-top:8px;padding:6px 10px;background:rgba(255,255,255,.6);border-radius:8px}
+  </style>
+</head>
+<body>
 
+  <div id="loginScreen" class="screen">
+    <div class="login-box panel">
+      <div class="scales">⚖️</div>
+      <h1>Expert Auto</h1>
+      <p class="subtitle">Analyse technique & juridique des litiges automobiles</p>
+      <label for="passwordInput">Mot de passe administrateur</label>
+      <input type="password" id="passwordInput" placeholder="••••••••" autocomplete="current-password">
+      <button onclick="login()">🔐 Connexion sécurisée</button>
+    </div>
+  </div>
+
+  <div id="mainScreen" class="screen hidden">
+    <header class="app-header panel">
+      <div>
+        <h2>⚖️ Analyse de Litige Automobile</h2>
+        <p class="subtitle">Expertise ingénieur + analyse juridique ultra-poussée</p>
+        <span id="quotaBadge">🧠 Analyses IA aujourd'hui : 0</span>
+      </div>
+      <button class="btn-secondary" onclick="logout()">Déconnexion</button>
+    </header>
+
+    <form id="litigeForm" class="panel" autocomplete="off">
+      <h3 class="section-title">1. Contexte du litige</h3>
+      <label for="typeLitige">Type de litige</label>
+      <select id="typeLitige" required>
+        <option value="vente_particulier">Vente entre particuliers</option>
+        <option value="vente_pro_part">Vendeur professionnel → acheteur particulier</option>
+        <option value="vente_pro_pro">Vente entre professionnels</option>
+        <option value="intervention">Litige suite à intervention d'un professionnel</option>
+      </select>
+      <label for="dateEvent">Date de la vente / de l'intervention</label>
+      <input type="date" id="dateEvent" required>
+      <label for="kmEvent">Kilométrage lors de l'événement</label>
+      <input type="number" id="kmEvent" inputmode="numeric" placeholder="ex : 85000" required>
+      <label for="datePanne">Date du constat de la panne</label>
+      <input type="date" id="datePanne" required>
+      <label for="kmPanne">Kilométrage actuel (panne)</label>
+      <input type="number" id="kmPanne" inputmode="numeric" placeholder="ex : 92000" required>
+      <label for="descPanne">Description détaillée des pannes et symptômes</label>
+      <textarea id="descPanne" placeholder="Ex : bruit métallique, perte de puissance, voyant moteur, fuite, code défaut…" required></textarea>
+      <button type="button" onclick="generateReport()">🧠 Générer le rapport d'expertise (Multi-IA)</button>
+    </form>
+
+    <div id="loading" class="hidden">⚖️ Analyse juridique ultra-poussée en cours…<br><small>Multi-IA gratuite (15 providers) + base juridique massive</small></div>
+
+    <div id="reportContainer" class="hidden">
+      <h3>📄 Rapport d'expertise</h3>
+      <p id="reportSource"></p>
+      <div id="providerStatus" class="provider-status"></div>
+      <div id="reportText"></div>
+      <div class="btn-group">
+        <button onclick="downloadPDF()">⬇️ PDF</button>
+        <button onclick="saveLocal()">💾 Sauvegarde hors-ligne</button>
+      </div>
+    </div>
+
+    <section class="panel">
+      <h3 class="section-title">🗂️ Dossiers sauvegardés (hors-ligne)</h3>
+      <div id="savedList"></div>
+    </section>
+  </div>
+
+  <script src="./data.js"></script>
+  <script src="./ai-providers.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
